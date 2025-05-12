@@ -1,4 +1,5 @@
 name: 'Custom Node Setup'
+
 description: 'Checks out code and sets up Node.js'
 inputs:
   node-version:
