@@ -18,4 +18,11 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
 
+    - name: Install Dependencies
+      run: npm install --legacy-peer-deps
+
+    - name: Build React App
+      run: npm run build
+
+
         
