@@ -1,13 +1,14 @@
 name: 'Deploy Node.js Backend to EC2'
 description: 'Deploys a Node.js backend app to EC2 via SCP and SSH'
 
-inputs:
+secrets:
   host:
     required: true
   username:
     required: true
   key:
     required: true
+inputs:
   app-name:
     required: true
   target-path:
@@ -19,9 +20,9 @@ runs:
     - name: Upload backend to EC2
       uses: appleboy/scp-action@v0.1.7
       with:
-        host: ${{ inputs.host }}
-        username: ${{ inputs.username }}
-        key: ${{ inputs.key }}
+        host: ${{ secrets.host }}
+        username: ${{ secrets.username }}
+        key: ${{ secrets.key }}
         source: "."
         target: ${{ inputs.target-path }}
         strip_components: 1
@@ -29,9 +30,9 @@ runs:
     - name: Run backend on EC2
       uses: appleboy/ssh-action@v1.0.0
       with:
-        host: ${{ inputs.host }}
-        username: ${{ inputs.username }}
-        key: ${{ inputs.key }}
+        host: ${{ secrets.host }}
+        username: ${{ secrets.username }}
+        key: ${{ secrets.key }}
         script: |
           cd ${{ inputs.target-path }}
           npm install
