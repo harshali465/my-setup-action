@@ -8,6 +8,7 @@ secrets:
     required: true
   key:
     required: true
+    
 inputs:
   app-name:
     required: true
