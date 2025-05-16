@@ -40,6 +40,7 @@ runs:
         host: ${{ secrets.host }}
         username: ${{ secrets.username }}
         key: ${{ secrets.key }}
+        
         script: |
           sudo rm -f ${{ inputs.deploy-path }}/index.nginx-debian.html
           sudo rm -rf ${{ inputs.deploy-path }}/*
